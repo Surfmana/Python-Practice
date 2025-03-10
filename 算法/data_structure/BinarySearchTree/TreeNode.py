@@ -39,6 +39,14 @@ class TreeNode:
             self.lchild.parent = self;
         if(self.hasRightChild()):
             self.rchild.parent = self;
-
+    def iter(self):#重新编写迭代器，相当于中序遍历算法
+        if self:
+            if(self.hasLeftChild()):
+                for item in self.lchild:
+                    yield item;
+            yield self.key;
+            if(self.hasRightChild()):
+                for item in self.rchild:
+                    yield item;
 
 

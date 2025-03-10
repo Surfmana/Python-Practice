@@ -38,6 +38,36 @@ class BinarySearchTree:
             self.root = TreeNode(key,value);
             self.size += 1;
 
-    #def get(self,key):#获取key值
+    def get(self,key):#获取key对应的value值
+        if self.root is None:
+            return None;
+        if(key == self.root.key):#如果当前的key值等于根节点的key值，则直接放回根节点的value
+            return self.root.value;
+        else:
+            values = self._get(key,self.root);
+            if values is None:
+                return None;
+            return values;
+
+
+    def _get(self,key,currentNode):
+        currentNode = TreeNode;
+        if(key == currentNode.key):
+            return currentNode.value;
+        if(key > currentNode.key):
+            return self._get(key,currentNode.rchile);
+        if(key < currentNode.key):
+            return self._get(key,currentNode.lchild);
+        if(currentNode is None):
+            return None;
+
+
+    def __getitem__(self, item):
+        return self.get(item);
+
+    def __contains__(self, item):
+        if self._get(item,self.root):
+            return True;
+        return False;
 
 
